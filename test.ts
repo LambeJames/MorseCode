@@ -1,4 +1,5 @@
 import { decodeMorse } from './decodemorse';
+import { encodeMorse } from './encodemorse';
 import { assert } from 'chai';
 
 const Test = {
@@ -8,26 +9,54 @@ const Test = {
 
 describe("Example from description", function() {
     it('HEY JUDE', () => {
-      Test.assertEquals(decodeMorse('.... . -.--   .--- ..- -.. .'), 'HEY JUDE')
+        Test.assertEquals(decodeMorse('.... . -.--   .--- ..- -.. .'), 'HEY JUDE')
     });
-  });
-  describe("Pass in single word: CODEDOJO", function() {
+});
+
+describe("Pass in single word: CODEDOJO", function() {
     it('CODEDOJO', () => {
-      Test.assertEquals(decodeMorse('-.-. --- -.. . -.. --- .--- ---'), 'CODEDOJO')
+        Test.assertEquals(decodeMorse('-.-. --- -.. . -.. --- .--- ---'), 'CODEDOJO')
     });
-  });
-  describe("Pass in single word with space beginning: CODEDOJO", function() {
+});
+
+describe("Pass in single word with space beginning: CODEDOJO", function() {
     it('CODEDOJO', () => {
-      Test.assertEquals(decodeMorse(' -.-. --- -.. . -.. --- .--- ---'), 'CODEDOJO')
+        Test.assertEquals(decodeMorse(' -.-. --- -.. . -.. --- .--- ---'), 'CODEDOJO')
     });
-  });
-  describe("Pass in single word with space at ending: CODEDOJO", function() {
+});
+
+describe("Pass in single word with space at ending: CODEDOJO", function() {
     it('CODEDOJO', () => {
-      Test.assertEquals(decodeMorse('-.-. --- -.. . -.. --- .--- --- '), 'CODEDOJO')
+        Test.assertEquals(decodeMorse('-.-. --- -.. . -.. --- .--- --- '), 'CODEDOJO')
     });
-  });
-  describe("Pass in single word with space at beginning and ending: CODEDOJO", function() {
+});
+
+describe("Pass in single word with space at beginning and ending: CODEDOJO", function() {
     it('CODEDOJO', () => {
-      Test.assertEquals(decodeMorse(' -.-. --- -.. . -.. --- .--- --- '), 'CODEDOJO')
+        Test.assertEquals(decodeMorse(' -.-. --- -.. . -.. --- .--- --- '), 'CODEDOJO')
     });
-  });
+});
+
+describe("Encode: CODEDOJO", function() {
+    it('CODEDOJO', () => {
+        Test.assertEquals(encodeMorse('CODEDOJO'), '-.-. --- -.. . -.. --- .--- ---')
+    });
+});
+
+describe("Encode: Pass in single word with space beginning: CODEDOJO", function() {
+    it('CODEDOJO', () => {
+        Test.assertEquals(encodeMorse(' CODEDOJO'), '-.-. --- -.. . -.. --- .--- ---')
+    });
+});
+
+describe("Encode: Pass in single word with space at ending: CODEDOJO", function() {
+    it('CODEDOJO', () => {
+        Test.assertEquals(encodeMorse('CODEDOJO '), '-.-. --- -.. . -.. --- .--- ---')
+    });
+});
+
+describe("Encode: Pass in single word with space at beginning and ending: CODEDOJO", function() {
+    it('CODEDOJO', () => {
+        Test.assertEquals(encodeMorse(' CODEDOJO '), '-.-. --- -.. . -.. --- .--- ---')
+    });
+});
